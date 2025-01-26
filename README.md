@@ -1,18 +1,22 @@
 ![image](https://github.com/user-attachments/assets/47091750-ef0f-4014-b471-57c0b18b975c)
-# Flutter Installation Guide
-This guide provides a step-by-step process to install Flutter on your system. Follow the instructions based on your operating system.
+# Flutter Installation Guide (Windows)
+
+This guide provides a step-by-step process to install Flutter on your Windows system, set up Android Studio, create an Android emulator, and run your first Flutter app. Follow the instructions below in the specified sequence.
+
+---
 
 ## Table of Contents
 
 1. [System Requirements](#system-requirements)
 2. [Install Flutter](#install-flutter)
-   - [Windows](#windows)
-   - [macOS](#macos)
-3. [Set up IDE](#set-up-ide)
+3. [Install Java JDK](#install-java-jdk)
+4. [Configure Java](#configure-java)
+5. [Configure Flutter](#configure-flutter)
+6. [Install Android Studio](#install-android-studio)
+7. [Set Up Android Emulator](#set-up-android-emulator)
+8. [Set up IDE (Optional)](#set-up-ide-optional)
    - [Visual Studio Code](#visual-studio-code)
-   - [Android Studio](#android-studio)
-4. [Configure Flutter](#configure-flutter)
-5. [Run Your First App](#run-your-first-app)
+9. [Run Your First App](#run-your-first-app)
 
 ---
 
@@ -20,125 +24,184 @@ This guide provides a step-by-step process to install Flutter on your system. Fo
 
 Before you install Flutter, ensure your system meets the following requirements:
 
-- **Operating System**: Windows 10 or later, macOS 10.14 or later, or a 64-bit Linux distribution.
+- **Operating System**: Windows 10 or later.
 - **Disk Space**: `2.8 GB` (does not include disk space for IDE/tools).
-- **Tools**: `Git, bash (for macOS/Linux), PowerShell (for Windows).
+- **Tools**: `Git` and `PowerShell`.
 
 ---
 
 ## Install Flutter
 
-### **`Windows`**
+1. **Download the Flutter SDK**:
+   - Visit the [Flutter SDK download page](https://docs.flutter.dev/get-started/install/windows) and download the latest stable release for Windows.
+   - Direct download link (latest stable version):
+     ```bash
+     https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.27.3-stable.zip
+     ```
 
-1. Download the Flutter SDK from the [Flutter Windows Installation](https://docs.flutter.dev/get-started/install/windows) page.
+2. **Extract the Flutter SDK**:
+   - Extract the downloaded zip file to a desired location (e.g., `C:\src\flutter`).
 
-   ```bash
-   https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.24.2-stable.zip
-   ```
-2. Extract the downloaded zip file to a desired location.
+3. **Update Environment Variables**:
+   - Open **System Properties** → **Advanced** → **Environment Variables**.
+   - Under **User variables**, select `Path` and click **Edit**.
+   - Add the `flutter\bin` directory to your system path (e.g., `C:\src\flutter\bin`).
 
-3. Update your environment variables:
+4. **Verify Installation**:
+   - Open a new terminal (Command Prompt or PowerShell) and run:
+     ```bash
+     flutter doctor
+     ```
+   - This command checks your environment and displays a report of the status of your Flutter installation.
 
-- Open System Properties → Advanced → Environment Variables.
-- Under User variables, select Path and click Edit.
-- Add the `flutter/bin` directory to your system path.
-  
-4. Run the following command in your terminal to verify the installation:
+---
 
-```bash
-flutter doctor
-```
-### **`macOS`**
-1. Download the Flutter SDK from the Flutter macOS Installation page.
-```bash
-https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.24.2-stable.zip
-```
-2. Extract the zip file to a desired location.
-
-3. Update your `PATH` environment variable by adding the following to your `.bashrc` or `.zshrc` file:
-```bash
-export PATH="$PATH:`pwd`/flutter/bin"
-```
-4. Run the following command to verify the installation:
-```bash
-flutter doctor
-```
 ## Install Java JDK
-### **`Windows`**
-1. Visit the [Oracle JDK download page](https://www.oracle.com/java/technologies/downloads/#java11-windows) (or the latest version).
 
-2. Accept the license agreement and download the Windows installer.
+1. **Download the Java JDK**:
+   - Visit the [Oracle JDK download page](https://www.oracle.com/java/technologies/downloads/#java17-windows) for Java 17 (or the latest version).
+   - Direct download link (latest stable version):
+     ```bash
+     https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.exe
+     ```
+   - Accept the license agreement and download the Windows installer.
 
-3. Run the installer and follow the instructions to complete the installation.
+2. **Install the JDK**:
+   - Run the installer and follow the instructions to complete the installation.
 
-4. Set the `JAVA_HOME` environment variable:
+---
 
-- Open System Properties → Advanced → Environment Variables.
-- Under System variables, click New and add:
-   - Variable name: JAVA_HOME
-   - Variable value: `C:\Program Files\Java\jdk-<version>` (replace <version> with the actual version number).
-5. Update the Path variable to include `%JAVA_HOME%\bin`.
-### **`macOS`**
-1. Visit the [Oracle JDK download page](https://www.oracle.com/java/technologies/downloads/#java11-mac) (or the latest version).
+## Configure Java
 
-2. Accept the license agreement and download the macOS installer.
+1. **Set the `JAVA_HOME` Environment Variable**:
+   - Open **System Properties** → **Advanced** → **Environment Variables**.
+   - Under **System variables**, click **New** and add:
+     - Variable name: `JAVA_HOME`
+     - Variable value: `C:\Program Files\Java\jdk-17` (replace `17` with the actual version number if different).
 
-3. Run the installer and follow the instructions to complete the installation.
+2. **Update the `Path` Variable**:
+   - In the **System variables** section, find the `Path` variable and click **Edit**.
+   - Click **New** and add the following entry:
+     ```
+     %JAVA_HOME%\bin
+     ```
+   - Click **OK** to save the changes.
 
-4. Set the JAVA_HOME environment variable by adding the following line to your .bash_profile or .zshrc file:
+3. **Verify Java Installation**:
+   - Open a new Command Prompt or PowerShell window.
+   - Run the following command to verify Java is correctly configured:
+     ```bash
+     java -version
+     ```
+   - You should see the installed Java version displayed.
 
-```bash
-export JAVA_HOME=$(/usr/libexec/java_home)
-```
-5. Run source ~/.bash_profile or source ~/.zshrc to apply the changes.
-## Set up IDE
-### **`Visual Studio Code`**
-1. Install Visual Studio Code.
-2. Open VS Code, go to Extensions, and install the Flutter and Dart extensions.
-3. Open a terminal in VS Code and run
+---
 
-```bash
-flutter doctor
-```
-### **`Android Studio`**
-1. Download Android Studio.
-2. Open Android Studio and install the Flutter and Dart plugins:
-- Go to File > Settings > Plugins > Marketplace.
-- Search for "Flutter" and "Dart" and install them.
-3. Configure the Android SDK and set up an emulator or physical device to test your apps.
+## Install Android Studio
+
+1. **Download Android Studio**:
+   - Visit the [Android Studio download page](https://developer.android.com/studio) and download the latest version for Windows.
+
+2. **Install Android Studio**:
+   - Run the downloaded installer and follow the installation wizard.
+   - During installation, ensure the following components are selected:
+     - Android SDK
+     - Android SDK Platform
+     - Android Virtual Device (AVD)
+
+3. **Launch Android Studio**:
+   - After installation, launch Android Studio and complete the setup wizard to install the latest SDK tools.
+
+---
+
+## Set Up Android Emulator
+
+1. **Open AVD Manager**:
+   - In Android Studio, go to **Tools** > **Device Manager**.
+
+2. **Create a New Virtual Device**:
+   - Click **Create Device**.
+   - Select a device definition (e.g., `Pixel 5`) and click **Next**.
+
+3. **Select System Image**:
+   - Choose a system image with **Android 14 (API Level 35)**.
+   - If the image is not installed, click the **Download** link next to the release name and follow the prompts to install it.
+
+4. **Configure AVD**:
+   - After selecting the system image, click **Next**.
+   - Configure the AVD settings (e.g., RAM, storage) and click **Finish**.
+
+5. **Launch the Emulator**:
+   - In the Device Manager, select the newly created AVD and click **Start**.
+
+---
+
+## Set up IDE (Optional)
+
+### **Visual Studio Code**
+
+1. **Install Visual Studio Code**:
+   - Download and install [Visual Studio Code](https://code.visualstudio.com/).
+
+2. **Install Flutter and Dart Extensions**:
+   - Open VS Code, go to the **Extensions** view (`Ctrl+Shift+X`), and search for "Flutter" and "Dart".
+   - Install both extensions.
+
+3. **Verify Setup**:
+   - Open a terminal in VS Code and run:
+     ```bash
+     flutter doctor
+     ```
+
+---
+
+## Run Your First App
+
+1. **Create a New Flutter Project**: 
+   - Open a terminal and run:
+     ```bash
+     flutter create my_first_app
+     ```
+
+2. **Navigate to Your Project Directory**:
+   - Run:
+     ```bash
+     cd my_first_app
+     ```
+
+3. **Run the App**:
+   - Start the Android emulator or connect a physical device.
+   - Run the app using:
+     ```bash
+     flutter run
+     ```
+
+---
+
 ## Configure Flutter
+
 After installing the SDK, run the following command to ensure everything is configured properly:
+
 ```bash
 flutter doctor
 ```
-It will show if there are any missing dependencies or tools required to complete the setup.
+
+This command checks for any missing dependencies or tools required to complete the setup.
 
 Example output:
 ```
 Doctor summary (to see all details, run flutter doctor -v):
-[✓] Flutter (Channel stable, 3.24.2, on macOS 12.6)
+[✓] Flutter (Channel stable, 3.27.3, on Windows 11)
 [✓] Android toolchain - develop for Android devices
-[✓] Xcode - develop for iOS and macOS
 [✓] Chrome - develop for the web
 [✓] Android Studio (version 2022.1)
 [✓] VS Code (version 1.80.0)
 ```
-## Run Your First App
-1. Create a new Flutter project:
-```bash
-flutter create my_first_app
-```
-2. Navigate into your project directory:
 
-```bash
-cd my_first_app
-```
-3. Run the app on an emulator or a connected device:
+---
 
-```bash
-flutter run
-```
 ## Conclusion
-Congratulations! You have successfully installed Flutter and set up your development environment. You're now ready to start building beautiful and powerful applications across multiple platforms. Don't forget to explore the vast resources available in the Flutter community, and always keep learning and experimenting.
+
+Congratulations! You have successfully installed Flutter, set up Android Studio, created an Android emulator, and run your first Flutter app. You're now ready to start building beautiful and powerful applications. Explore the vast resources available in the Flutter community, and always keep learning and experimenting.
 
 Happy coding! If you encounter any issues or have questions, feel free to reach out or check the Flutter community for support.
