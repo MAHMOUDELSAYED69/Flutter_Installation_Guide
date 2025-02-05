@@ -11,12 +11,13 @@ This guide provides a step-by-step process to install Flutter on your Windows sy
 2. [Install Flutter](#install-flutter)
 3. [Install Java JDK](#install-java-jdk)
 4. [Configure Java](#configure-java)
-5. [Configure Flutter](#configure-flutter)
-6. [Install Android Studio](#install-android-studio)
-7. [Set Up Android Emulator](#set-up-android-emulator)
-8. [Set up IDE (Optional)](#set-up-ide-optional)
+5. [Install Android Studio](#install-android-studio)
+6. [Set Up Android Emulator](#set-up-android-emulator)
+7. [Set up IDE (Optional)](#set-up-ide-optional)
    - [Visual Studio Code](#visual-studio-code)
-9. [Run Your First App](#run-your-first-app)
+8. [Configure Android Emulator in VS Code](#configure-android-emulator-in-vs-code)
+9. [Final Configuration Check](#final-configuration-check)
+10. [Run Your First App](#run-your-first-app)
 
 ---
 
@@ -121,7 +122,7 @@ Before you install Flutter, ensure your system meets the following requirements:
 
 2. **Create a New Virtual Device**:
    - Click **Create Device**.
-   - Select a device definition (e.g., `Pixel 5`) and click **Next**.
+   - Select a device definition (e.g., `Pixel 6 pro`) and click **Next**.
 
 3. **Select System Image**:
    - Choose a system image with **Android 14 (API Level 35)**.
@@ -155,6 +156,55 @@ Before you install Flutter, ensure your system meets the following requirements:
 
 ---
 
+## Configure Android Emulator in VS Code
+
+1. **Install Android Emulator Extension**:
+   - Open VS Code, go to the **Extensions** view (`Ctrl+Shift+X`), and search for "Android Emulator".
+   - Install the extension.
+
+2. **Set Emulator Path**:
+   - Open VS Code settings (`Ctrl+,`).
+   - Search for "emulator path".
+   - Add the following path to the emulator settings:
+     ```
+     C:\Users\<YourUsername>\AppData\Local\Android\Sdk\emulator
+     ```
+     Replace `<YourUsername>` with your actual Windows username.
+
+3. **Launch Emulator**:
+   - Open the Command Palette (`Ctrl+Shift+P`) and search for "Android Emulator: Start".
+   - Select the emulator you want to launch.
+
+---
+
+## Final Configuration Check
+
+After completing the installation and setup, it’s important to verify that everything is configured correctly. Use the following command to check your Flutter environment:
+
+```bash
+flutter doctor
+```
+
+This command scans your system and identifies any missing dependencies or tools required for Flutter development. It provides a summary of your setup and highlights any issues that need to be resolved.
+
+### Example Output:
+```
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.27.3, on Windows 11)
+[✓] Android toolchain - develop for Android devices
+[✓] Chrome - develop for the web
+[✓] Android Studio (version 2022.1)
+[✓] VS Code (version 1.80.0)
+```
+
+### What to Look For:
+- **Green checkmarks (✓)**: Indicate that the component is properly installed and configured.
+- **Red crosses (✗)**: Highlight missing dependencies or tools that need to be addressed.
+
+If any issues are reported, follow the suggestions provided by `flutter doctor` to resolve them. Once all checks pass, your Flutter environment is ready for development!
+
+---
+
 ## Run Your First App
 
 1. **Create a New Flutter Project**: 
@@ -177,31 +227,3 @@ Before you install Flutter, ensure your system meets the following requirements:
      ```
 
 ---
-
-## Configure Flutter
-
-After installing the SDK, run the following command to ensure everything is configured properly:
-
-```bash
-flutter doctor
-```
-
-This command checks for any missing dependencies or tools required to complete the setup.
-
-Example output:
-```
-Doctor summary (to see all details, run flutter doctor -v):
-[✓] Flutter (Channel stable, 3.27.3, on Windows 11)
-[✓] Android toolchain - develop for Android devices
-[✓] Chrome - develop for the web
-[✓] Android Studio (version 2022.1)
-[✓] VS Code (version 1.80.0)
-```
-
----
-
-## Conclusion
-
-Congratulations! You have successfully installed Flutter, set up Android Studio, created an Android emulator, and run your first Flutter app. You're now ready to start building beautiful and powerful applications. Explore the vast resources available in the Flutter community, and always keep learning and experimenting.
-
-Happy coding! If you encounter any issues or have questions, feel free to reach out or check the Flutter community for support.
